@@ -1,15 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import metamask from '../img/svg/metamask.svg'
-import trustwallet from '../img/svg/trustwallet.svg'
-import mathwallet from '../img/svg/mathwallet.svg'
-import walletconnect from '../img/svg/walletconnect.svg'
-import tokenpocket from '../img/svg/tokenpocket.svg'
-import binancechain from '../img/svg/binancechain.svg'
-import close from '../img/svg/close.svg'
+import metamask from 'img/svg/metamask.svg'
+import trustwallet from 'img/svg/trustwallet.svg'
+import mathwallet from 'img/svg/mathwallet.svg'
+import walletconnect from 'img/svg/walletconnect.svg'
+import tokenpocket from 'img/svg/tokenpocket.svg'
+import binancechain from 'img/svg/binancechain.svg'
+import close from 'img/svg/close.svg'
 
 
-export default function ConnectWallet({open,children,onClose}){
+function ConnectWallet({open,onClose}){
   if (!open) return null
 
   return ReactDOM.createPortal(
@@ -31,11 +31,11 @@ export default function ConnectWallet({open,children,onClose}){
         <li><a href='#'>Binance Chain Wallet <img src={binancechain}/> </a></li>
       </ul>
       <a className='learn-how' href='#'> <span>?</span> Learn how to connect</a>
-
-
       </div>,
       </div>,
       document.getElementById('portal')
   );
 }
+
+export default ConnectWallet;
 

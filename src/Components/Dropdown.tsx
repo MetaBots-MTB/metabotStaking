@@ -1,9 +1,12 @@
 import { useState } from "react";
 import chevright from "../img/svg/chevron-right.svg"
 
-function Dropdown({ selected, setSelected }) {
+function Dropdown() {
   const [isActive, setIsActive] = useState(false);
   const options = ["1993", "1994", "1995"];
+
+  const [selected, setSelected] = useState("Year");
+  
   return (
     <div className="dropdown">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>

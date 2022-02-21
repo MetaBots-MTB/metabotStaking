@@ -1,4 +1,4 @@
-import logo from '../img/metabot-logo.png';
+import logo from 'img/metabot-logo.png';
 
 
 function StakeCard(props) {

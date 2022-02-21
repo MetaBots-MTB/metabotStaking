@@ -4,13 +4,8 @@ import twitter from '../img/svg/twitter-g.svg';
 import linkedin from '../img/svg/linkedin.svg';
 
 
-
-
 function Footer() {
   return (
-
-      
-      
       <div className="copyright-bar">
         <span
           >MetaBots © P2E Game. Powered by <i>Passive-Income ©</i>. All rights
