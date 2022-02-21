@@ -1,0 +1,303 @@
+a{text-decoration: none;color: inherit;}
+a:hover{text-decoration: none;color: inherit;}
+li{list-style: none;}
+ul{padding: 0;margin: 0;}
+.App{background-image: url(./img/stake-bg.jpg);background-size: cover;min-height: 100vh;width: 100%;background-position: center;}
+html,body{max-width: 100%;overflow-x: hidden;}
+.header {
+  position: relative;
+  padding: 1% 5%;
+  z-index: 7;
+  transition: all 250ms ease;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 75px;
+  transition: width 250ms ease
+}
+
+.header-scroll .logo {
+  width: 60px
+}
+
+.header ul {
+  margin-left: 20%;
+  display: flex;
+  gap: 50px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.header ul li {
+  display: inline-flex;
+}
+
+.header ul li a:hover {
+  color: #6ab3f4;
+}
+.header .button{
+  position: absolute;
+    right: 5%;
+}
+.button{
+    background: none;
+    border: 2px solid #4048a1;
+    border-radius: 50px;
+    padding: 10px 25px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 1px;
+    transition: all 250ms ease;
+}
+.button:hover {
+  background-color: #4048a1;
+  color: #000;
+  cursor: pointer;
+}
+.stake-info-sec{ padding: 20px 5% ;}
+.stake-info{border: 1px solid #4048a1;border-radius: 15px;padding: 35px;text-align: center;}
+.stake-info-top{
+  position: relative;
+}
+.stake-info-top button{background: none;color: #fff;cursor: pointer;}
+.stake-info-top button img{height: 48px;}
+.stake-info-top h2{color: #fff;font-size: 36px;}
+.back-btn{border: none;height: 115px;width: 36px;}
+.help-btn{border: 2px solid #fff;border-radius: 50%;font-size: 26px;height: 36px;width: 36px; margin: auto 0;position: absolute;right: 15px;top: 10px;}
+.help-info{
+  position: absolute;
+  display: block;
+  border: 1px solid #1b1f43;
+  background: none;
+  border-radius: 5px;
+  font-size: 10px;
+  padding: 10px;
+  width: 120px;
+  transform: translate(-110%,-70%);
+  opacity: 0;
+  user-select: none;
+  transition: opacity 250ms ease;
+}
+.help-btn:hover .help-info{opacity: 1;}
+.stake-info-middle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+.stake-info-middle p{
+    color: #c4c4c4;
+    border: 1px solid #1b1f43;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    width: calc(100%);
+    font-size: 13px;
+}
+.stake-info-middle span{text-align: left;}
+.stake-info-middle span:nth-child(2){text-align: right;}
+.stake-info-middle span:nth-child(4){gap: 7px;display: flex;color: #4048a1;justify-content: flex-end;align-items: center;}
+.stake-info-middle p:first-of-type{
+  display: grid;
+  justify-items: stretch;
+  grid-template-columns: 1fr 1fr;
+  width: calc(100%);
+  gap: 30px;
+}
+.stake-info .button{width: 70%;margin: auto;font-size: 28px;margin-top: 25px;}
+.stake-info-middle form{display: flex;gap: 30px;}
+.stake-info-middle form input{color: #c4c4c4;background: none;border: 1px solid #1b1f43;border-radius: 5px;padding: 5px 10px;width: 60px;}
+.stake-info-middle form select{color: #c4c4c4;background: none;border: none;border-radius: 3px;padding: 5px;}
+.stake-info-middle form input:focus{outline: 1px solid #1b1f43;}
+.stake-info-middle form select:focus{outline: 1px solid #1b1f43;}
+.stake-info-middle p:nth-child(2) {padding: 15px 30px;}
+.stake-info-middle p:nth-child(2) a{font-size: 12px;}
+.stake-info-middle p:nth-child(2) span{border-radius: 50%; border:1px solid #c4c4c4;aspect-ratio: 1/1;padding: 1px 6px;font-size: 10px;margin-right: 10px;}
+
+.stake-card-holder{display: grid;grid-template-columns: 1fr 1fr 1fr;justify-content: space-between;gap: 30px;padding: 30px 0;}
+.stake-card{position: relative; text-align: center;color: #c4c4c4; font-size: 14px;border: 1px solid #4048a1;border-radius: 15px;padding: 0 15px;}
+.stake-card img{width: 55px;position: absolute;top: 15px;left: 15px;}
+.stake-card h2{font-size: 24px;line-height: 42px;}
+.stake-card li{margin: 20px 0;display: flex;justify-content: space-between;}
+.stake-card span:first-of-type{text-align: left;}
+.stake-card span:last-of-type{color: #fff;text-align: right;}
+.stake-card ul:last-of-type{border-top: 1px solid #4048a1;color: #fff;}
+.stake-card .button{font-size: 12px;}
+.input-coin-amount{width: unset !important;}
+.input-coin-amount::-webkit-outer-spin-button,
+.input-coin-amount::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input-coin-amount[type=number] {
+  -moz-appearance: textfield;
+}
+.connect-wallet-outer{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  z-index: 10;
+  justify-content: center;
+  align-items: center;
+  background-color: #1b1f43ba;
+  left: 0;
+  top: 0;
+}
+.connect-wallet{
+  position: relative;
+  border: 1px solid #4048a1;
+  border-radius: 15px;
+  background-image: url(./img/full-bg.jpg);
+  min-width: 400px;
+}
+.connect-wallet button img{width: 30px;cursor: pointer; }
+.connect-wallet button{
+  background: none;
+  border: none;
+  position: absolute;
+  right: 15px;
+  top: 17px;
+  cursor: pointer;
+}
+.connect-wallet h2{color: #c4c4c4;border-bottom: 1px solid #4048a1;padding: 15px 30px;margin: 0;}
+.connect-wallet ul{padding: 10px 30px;}
+.learn-how{color: #c4c4c4;font-size: 16px;text-align: center;padding: 20px;display: block;}
+.learn-how:hover{color: #fff;}
+.learn-how span{border-radius: 50%;  border: 2px solid #c4c4c4;  padding: 0px 5px;  font-size: 12px;}
+.connect-wallet li a{color: #c4c4c4;display: flex;justify-content: space-between;border-radius: 15px;background-color: #1b1f43;padding: 10px;align-items: center;margin: 10px 0;transition: all 250ms ease;}
+.connect-wallet li a:hover{color: #fff;background-color: #4048a1;}
+
+
+
+
+
+
+
+
+
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+.dropdown {
+  user-select: none;
+  position: relative;
+}
+.dropdown .dropdown-btn {
+  padding: 5px;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  color: #c4c4c4;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: space-between;
+}
+.dropdown .dropdown-btn img{transform: rotate(90deg);margin-left: 10px;}
+
+.dropdown .dropdown-content {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background: #1b1f43ba;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  color: #c4c4c4;
+  width: 95%;
+}
+.dropdown .dropdown-content .dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dropdown .dropdown-content .dropdown-item:hover {
+  background: #4048a1;
+  color: #fff;
+}
+
+.copyright-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  font-weight: 700;
+  color: #c4c4c4;
+  border-top: 1px solid #4048a1;
+}
+
+.copyright-bar li {
+  display: inline-block;
+  margin: 0
+}
+
+.copyright-bar ul {
+  margin: 0
+}
+
+.copyright-bar i {
+  font-style: normal;
+  font-weight: 100
+}
+.icon-footer {
+  width: 20px;
+  border: 1px solid #4048a1;
+  border-radius: 30%;
+  padding: 3px;
+  margin-right: 15px
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 991px) {
+  .stake-card-holder{grid-template-columns: 1fr 1fr;}
+}
+@media screen and (max-width: 769px) {
+  .header{padding: 15px;font-size: 12px;}
+  .logo{width: 65px;}
+  .header ul{margin-left: 50px;}
+  .header .button{padding: 10px 15px;letter-spacing: 0;right: 15px;}
+  .back-btn {height: 60px;}
+  .stake-info-top h2 {margin: 0;}
+  .stake-info-middle{flex-direction: column;align-items: center;}
+  .stake-info-middle p:nth-child(2){padding: 15px;}
+  .stake-info-middle p:first-of-type{margin-top: 20px;}
+  .stake-info-middle p{margin: 0;}
+  .stake-info-middle form{justify-content: center;}
+  .help-info{background-image: url(./img/full-bg.jpg);}
+}
+
+@media screen and (max-width: 580px) {
+  .stake-card-holder{grid-template-columns: 1fr;}
+
+}
+
+@media screen and (max-width: 400px) {
+  .connect-wallet{min-width: unset;}
+  .connect-wallet h2{    padding: 15px 60px 15px 15px}
+  .connect-wallet button {right: 5px;}
+  .stake-info{padding: 15px;}
+  .stake-info-middle p:first-of-type{width: -webkit-fill-available;}
+  .stake-info-middle p{width: -webkit-fill-available;}
+  .help-btn{right: 0;}
+  .input-coin-amount{width: 60px !important;}
+  .header ul{margin-left: 20px;gap: 20px;}
+  .header{padding: 15px 5px;}
+  .stake-info .button{width: 100%;}
+}
