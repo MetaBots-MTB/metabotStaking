@@ -12,7 +12,7 @@ function Header() {
   return (
     <div className="header">
       <img className='logo' src={logo} alt='' />
-      {account ? <div className='button'>{account}</div> : <>
+      {account ? <div className='account-address'>{account}</div> : <>
         <button onClick={() => setIsOpen(true)} className='button'>
           Connect to a wallet
         </button>

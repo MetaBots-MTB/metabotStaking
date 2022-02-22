@@ -25,38 +25,38 @@ function ConnectWallet({ open, setIsOpen }) {
 
         <h2>Connect to a wallet</h2>
         <ul>
-          <li><a href='#' onClick={() => {
+          <li onClick={() => {
+            login(ConnectorNames.Injected);
+            window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
+            setIsOpen(false)}}
+          >Metamask <img src={metamask} /></li>
+          <li onClick={() => {
             login(ConnectorNames.Injected);
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
             setIsOpen(false)
-          }}>Metamask <img src={metamask} /> </a></li>
-          <li><a href='#' onClick={() => {
+          }}>TrustWallet <img src={trustwallet} /></li>
+          <li onClick={() => {
             login(ConnectorNames.Injected);
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
             setIsOpen(false)
-          }}>TrustWallet <img src={trustwallet} /> </a></li>
-          <li><a href='#' onClick={() => {
+          }}>MathWallet <img src={mathwallet} /></li>
+          <li onClick={() => {
             login(ConnectorNames.Injected);
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
             setIsOpen(false)
-          }}>MathWallet <img src={mathwallet} /> </a></li>
-          <li><a href='#' onClick={() => {
-            login(ConnectorNames.Injected);
-            window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
-            setIsOpen(false)
-          }}>Tokenpocket <img src={tokenpocket} /> </a></li>
-          <li><a href='#' onClick={() => {
+          }}>Tokenpocket <img src={tokenpocket} /></li>
+          <li onClick={() => {
             login(ConnectorNames.WalletConnect);
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.WalletConnect);
             setIsOpen(false)
-          }}>Walletconnect <img src={walletconnect} /> </a></li>
-          <li><a href='#' onClick={() => {
+          }}>Walletconnect <img src={walletconnect} /></li>
+          <li  onClick={() => {
             login(ConnectorNames.Injected);
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
             setIsOpen(false)
-          }}>Binance Chain Wallet <img src={binancechain} /> </a></li>
+          }}>Binance Chain Wallet <img src={binancechain} /></li>
         </ul>
-        <a className='learn-how' href='#'> <span>?</span> Learn how to connect</a>
+        <a className='learn-how' target="_blank" href='https://docs.pancakeswap.finance/help/faq#how-do-i-set-up-my-wallet-on-binance-smart-chain'> <span>?</span> Learn how to connect</a>
       </div>,
     </div>,
     document.getElementById('portal')

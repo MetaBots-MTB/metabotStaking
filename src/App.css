@@ -56,6 +56,23 @@ html,body{max-width: 100%;overflow-x: hidden;}
   color: #000;
   cursor: pointer;
 }
+
+.header .account-address{
+  position: absolute;
+    right: 5%;
+}
+
+.account-address{
+    background: none;
+    border: 2px solid #4048a1;
+    border-radius: 50px;
+    padding: 10px 25px;
+    text-align: center;
+    color: #fff;
+    letter-spacing: 1px;
+    transition: all 250ms ease;
+
+}
 .stake-info-sec{ padding: 20px 5% ;}
 .stake-info{border: 1px solid #4048a1;border-radius: 15px;padding: 35px;text-align: center;}
 .stake-info-top{
@@ -168,8 +185,8 @@ html,body{max-width: 100%;overflow-x: hidden;}
 .learn-how{color: #c4c4c4;font-size: 16px;text-align: center;padding: 20px;display: block;}
 .learn-how:hover{color: #fff;}
 .learn-how span{border-radius: 50%;  border: 2px solid #c4c4c4;  padding: 0px 5px;  font-size: 12px;}
-.connect-wallet li a{color: #c4c4c4;display: flex;justify-content: space-between;border-radius: 15px;background-color: #1b1f43;padding: 10px;align-items: center;margin: 10px 0;transition: all 250ms ease;}
-.connect-wallet li a:hover{color: #fff;background-color: #4048a1;}
+.connect-wallet li{color: #c4c4c4;cursor:'pointer';display: flex;justify-content: space-between;border-radius: 15px;background-color: #1b1f43;padding: 10px;align-items: center;margin: 10px 0;transition: all 250ms ease;}
+.connect-wallet li:hover{color: #fff;cursor: pointer;background-color: #4048a1;}
 
 
 
