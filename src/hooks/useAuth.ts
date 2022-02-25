@@ -24,28 +24,26 @@ const useAuth = () => {
     const connector = connectorsByName[connectorID]
     if (connector) {
       activate(connector, async (error: Error) => {
-        console.log('error',error)
+        window.localStorage.removeItem(connectorLocalStorageKey)
         if (error instanceof UnsupportedChainIdError) {
-          const hasSetup = await setupNetwork()
-          if (hasSetup) {
-            activate(connector)
+          toast(toastTypes.error, "Chain_ID Error", error.message)
+          // const hasSetup = await setupNetwork()
+          // if (hasSetup) {
+          //   activate(connector)
+          // }
+        } else if (error instanceof NoEthereumProviderError) {
+          toast(toastTypes.error, 'Provider Error', 'No provider was found')
+        } else if (
+          error instanceof UserRejectedRequestErrorInjected ||
+          error instanceof UserRejectedRequestErrorWalletConnect
+        ) {
+          if (connector instanceof WalletConnectConnector) {
+            const walletConnector = connector as WalletConnectConnector
+            walletConnector.walletConnectProvider = null
           }
+          toast(toastTypes.error, "Authorization error", error.message)
         } else {
-          window.localStorage.removeItem(connectorLocalStorageKey)
-          if (error instanceof NoEthereumProviderError) {
-            toast(toastTypes.error, 'Provider Error', 'No provider was found')
-          } else if (
-            error instanceof UserRejectedRequestErrorInjected ||
-            error instanceof UserRejectedRequestErrorWalletConnect
-          ) {
-            if (connector instanceof WalletConnectConnector) {
-              const walletConnector = connector as WalletConnectConnector
-              walletConnector.walletConnectProvider = null
-            }
-            toast(toastTypes.error, "Authorization error", 'Please authorize to access your account')
-          } else {
-            toast(toastTypes.error, error.name, error.message)
-          }
+          toast(toastTypes.error, error.name, error.message)
         }
       })
     } else {

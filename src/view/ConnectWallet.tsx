@@ -22,7 +22,6 @@ function ConnectWallet({ open, setIsOpen }) {
         <button onClick={() => setIsOpen(false)}>
           <img src={close} alt='' />
         </button>
-
         <h2>Connect to a wallet</h2>
         <ul>
           <li onClick={() => {

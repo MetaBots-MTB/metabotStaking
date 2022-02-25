@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import logo from 'img/metabot-logo.png';
 import ConnectWallet from './ConnectWallet'
-import { Toaster } from 'react-hot-toast';
 import { useActiveWeb3React } from 'hooks/web3';
-
 
 function Header() {
   const { account } = useActiveWeb3React()

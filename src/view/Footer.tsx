@@ -1,7 +1,7 @@
-import telegram from '../img/svg/telegram.svg';
-import facebook from '../img/svg/facebook-g.svg';
-import twitter from '../img/svg/twitter-g.svg';
-import linkedin from '../img/svg/linkedin.svg';
+import telegram from 'img/svg/telegram.svg';
+import facebook from 'img/svg/facebook-g.svg';
+import twitter from 'img/svg/twitter-g.svg';
+import linkedin from 'img/svg/linkedin.svg';
 
 
 function Footer() {

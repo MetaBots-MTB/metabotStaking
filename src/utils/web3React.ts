@@ -9,10 +9,10 @@ import getNodeUrl from './getRpcUrl'
 
 const POLLING_INTERVAL = 12000
 let rpcUrl = getNodeUrl()
-const chainId =parseInt(process.env.REACT_APP_CHAIN_ID,10)
+const chainId = parseInt(process.env.REACT_APP_CHAIN_ID, 10)
 
-export const injected = new InjectedConnector({})
-// export const injected = new InjectedConnector({ supportedChainIds: [chainId] })
+// export const injected = new InjectedConnector({})
+export const injected = new InjectedConnector({ supportedChainIds: [chainId] })
 
 const walletConnectorSetting: IWalletConnectProviderOptions = {
   rpc: { [chainId]: rpcUrl },
@@ -32,10 +32,9 @@ export const connectorsByName: { [connectorName in ConnectorNames]: any } = {
 
 export const getLibrary = (provider: any): Web3Provider => {
   const library = new Web3Provider(provider)
-  library.pollingInterval = 1000
+  library.pollingInterval = 1_000
   return library
 }
-
 
 export const network = new NetworkConnector({
   urls: { [chainId]: rpcUrl },

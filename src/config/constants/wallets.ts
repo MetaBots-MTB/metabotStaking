@@ -6,3 +6,5 @@ export enum ConnectorNames {
   WalletConnect = 'walletconnect',
   // BSC = 'bsc',
 }
+
+export const NetworkContextName = 'NETWORK'

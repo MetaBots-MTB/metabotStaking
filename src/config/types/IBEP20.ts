@@ -18,7 +18,7 @@ import { Listener, Provider } from "@ethersproject/providers";
 import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 
 export interface IBEP20Interface extends utils.Interface {
-  functions: {
+  methods: {
     "allowance(address,address)": FunctionFragment;
     "approve(address,uint256)": FunctionFragment;
     "balanceOf(address)": FunctionFragment;
@@ -123,7 +123,7 @@ export interface IBEP20 extends BaseContract {
   once: OnEvent<this>;
   removeListener: OnEvent<this>;
 
-  functions: {
+  methods: {
     allowance(
       owner: string,
       spender: string,

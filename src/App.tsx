@@ -1,6 +1,6 @@
-import Header from 'Components/Header'
-import StakeInfo from 'Components/StakeInfo'
-import Footer from 'Components/Footer'
+import Header from 'view/Header'
+import StakeInfo from 'view/StakeInfo'
+import Footer from 'view/Footer'
 import Web3ReactManager from 'Components/Web3ReactManager';
 import { Toaster } from 'react-hot-toast';
 

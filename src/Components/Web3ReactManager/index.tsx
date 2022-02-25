@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { network } from 'utils/web3React'
 import { useEagerConnect, useInactiveListener } from 'hooks/web3'
-import { NetworkContextName } from 'config/constants/misc'
+import { NetworkContextName } from 'config/constants/wallets'
 import Loader from '../Loader'
 
 
