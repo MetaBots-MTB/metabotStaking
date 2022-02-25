@@ -1,40 +1,33 @@
 import { useBEP20, useStakingContract } from "hooks/useContract"
 import { useCallback, useEffect, useState } from "react"
-import { addstakes, addStake, configureLocks, getReward, handleTransaction, withDrawStake, startTime, approve } from "utils/callHelper"
+import { userStakes, addStake, configureLocks, getReward, handleTransaction, withDrawStake, approve } from "utils/callHelper"
 import { BigNumber } from '@ethersproject/bignumber';
 import { useActiveWeb3React } from "hooks/web3"
 import { useToast } from "hooks/useToast";
-import { formatBN, formatDate, formatDuration } from "utils/formatters";
-import {
-    BigNumberish,
-    BytesLike,
-    CallOverrides,
-    ContractTransaction,
-    Overrides,
-    PopulatedTransaction,
-    Signer,
-    utils,
-} from "ethers";
+import { ContractTransaction } from "ethers";
+import { getTokenAddress } from "utils/addressHelper";
+import { configureLock } from "config/types/metabotstaking";
+import { istake } from "./types";
 
 
 export const useStaking = () => {
 
     const { account } = useActiveWeb3React()
     const stakingContract = useStakingContract()
-    const tokenContract = useBEP20("0x09861d8c3C1350699f8522253E5485f751D6fA78")
+    const tokenContract = useBEP20(getTokenAddress())
     const { toast, toastTypes } = useToast()
 
     const [loading, setLoading] = useState(false)
-    const [locks, setLocks] = useState<any>()
+    const [locks, setLocks] = useState<configureLock[]>([])
 
-    const [stakes, setStakes] = useState<any>([])
-    const [earn, setEarn] = useState<any>([])
+    const [stakes, setStakes] = useState<istake[]>([])
+    const [earn, setEarn] = useState<BigNumber[]>([])
 
     const getStakes = useCallback(
         async (_account: string) => {
             setLoading(true)
             try {
-                let temp: any = await addstakes(stakingContract, _account, true)
+                let temp = await userStakes(stakingContract, _account, true)
                 setStakes(temp.stakes)
                 setEarn(temp.stakesEarned)
             } catch (error) {
@@ -84,13 +77,13 @@ export const useStaking = () => {
         }, [stakingContract])
 
     const withDraw = useCallback(
-        async (amount, stakeID) => {
+        async (amount: BigNumber, stakeID: number) => {
             setLoading(true)
             try {
                 const tx: ContractTransaction = await withDrawStake(stakingContract, amount, stakeID, account)
                 toast(toastTypes.info, "Info", "Transaction is in proceess")
                 const success = await handleTransaction(tx)
-                if (success) getStakes(account);toast(toastTypes.success, "Success", "WithDrawn Succeed")
+                if (success) getStakes(account); toast(toastTypes.success, "Success", "WithDrawn Succeed")
             } catch (error) {
                 alert((error as any).message)
             } finally {
@@ -99,12 +92,12 @@ export const useStaking = () => {
         }, [stakingContract])
 
     const reward = useCallback(
-        async (stakeID) => {
+        async (stakeID: number) => {
             setLoading(true)
             const tx: ContractTransaction = await getReward(stakingContract, stakeID, account)
             toast(toastTypes.info, "Info", "Transaction is in proceess")
             const success = await handleTransaction(tx)
-            if (success) getStakes(account);toast(toastTypes.success, "Success", "Rewards sent")
+            if (success) getStakes(account); toast(toastTypes.success, "Success", "Rewards sent")
             setLoading(false)
         }, [stakingContract])
 

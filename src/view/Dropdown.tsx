@@ -1,8 +1,15 @@
 import { useState } from "react";
 import { formatDuration } from "utils/formatters";
-import chevright from "../img/svg/chevron-right.svg"
+import chevright from "img/svg/chevron-right.svg"
+import { configureLock } from "config/types/metabotstaking";
 
-function Dropdown({ options, setIndex }) {
+export interface IDropDown{
+  options:configureLock[],
+  setIndex:(id:number)=>void
+
+}
+
+function Dropdown({ options, setIndex }:IDropDown) {
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState("Year");
 

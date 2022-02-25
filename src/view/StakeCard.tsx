@@ -1,8 +1,9 @@
+import { IStakeCard } from 'callbacks/types';
 import logo from 'img/metabot-logo.png';
 import { formatBN, formatDateTime, formatDuration } from 'utils/formatters';
 
 
-function StakeCard({ stake, earn, withDraw, reward, index }) {
+function StakeCard({ stake, earn, withDraw, reward, index }: IStakeCard) {
 
     return (
         <div className="stake-card">
@@ -15,15 +16,15 @@ function StakeCard({ stake, earn, withDraw, reward, index }) {
                 </li>
                 <li>
                     <span>Stake Duration</span>
-                    <span>{formatDuration((stake.unlock - stake.started))}</span>
+                    <span>{formatDuration((stake.unlock.toNumber() - stake.started.toNumber()))}</span>
                 </li>
                 <li>
                     <span>Withdraw TimeFrame</span>
-                    <span>{formatDateTime((stake.unlock) * 1000)}</span>
+                    <span>{formatDateTime((stake.unlock.toNumber()) * 1000)}</span>
                 </li>
                 <li>
                     <span>Apy</span>
-                    <span>{stake.apy / 100}%</span>
+                    <span>{stake.apy/100}%</span>
                 </li>
                 <li>
                     <span>withdrawnRewards Amount</span>
@@ -31,12 +32,12 @@ function StakeCard({ stake, earn, withDraw, reward, index }) {
                 </li>
                 <li>
                     <span>lastUpdated</span>
-                    <span>{formatDateTime(stake.lastUpdated * 1000)}</span>
+                    <span>{formatDateTime(stake.lastUpdated.toNumber() * 1000)}</span>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <span>{stake.unlock > Date.now()/1000 && stake.active ? 0 : formatBN(stake.stake)} Metabot</span>
+                    <span>{stake.unlock.toNumber() > Date.now() / 1000 && stake.active ? 0 : formatBN(stake.stake)} Metabot</span>
                     <span>{formatBN(earn[index])} Metabot</span>
                 </li>
                 <li>

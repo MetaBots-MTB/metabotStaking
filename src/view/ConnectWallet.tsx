@@ -9,13 +9,15 @@ import binancechain from 'img/svg/binancechain.svg'
 import close from 'img/svg/close.svg'
 import useAuth from 'hooks/useAuth';
 import { connectorLocalStorageKey, ConnectorNames } from 'config/constants/wallets';
+import { IConnectWallet } from 'callbacks/types';
 
-function ConnectWallet({ open, setIsOpen }) {
+
+function ConnectWallet({ open, setIsOpen }: IConnectWallet) {
 
   const { login } = useAuth()
 
   if (!open) return null
-
+  
   return ReactDOM.createPortal(
     <div className='connect-wallet-outer'>
       <div className='connect-wallet'>
@@ -27,7 +29,8 @@ function ConnectWallet({ open, setIsOpen }) {
           <li onClick={() => {
             login(ConnectorNames.Injected);
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
-            setIsOpen(false)}}
+            setIsOpen(false)
+          }}
           >Metamask <img src={metamask} /></li>
           <li onClick={() => {
             login(ConnectorNames.Injected);
@@ -49,7 +52,7 @@ function ConnectWallet({ open, setIsOpen }) {
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.WalletConnect);
             setIsOpen(false)
           }}>Walletconnect <img src={walletconnect} /></li>
-          <li  onClick={() => {
+          <li onClick={() => {
             login(ConnectorNames.Injected);
             window.localStorage.setItem(connectorLocalStorageKey, ConnectorNames.Injected);
             setIsOpen(false)

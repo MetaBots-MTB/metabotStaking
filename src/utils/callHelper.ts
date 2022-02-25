@@ -27,7 +27,7 @@ export const configureLocks = async (contract: MTB_Staking) => {
 export const addStake = async (contract: MTB_Staking, amount: BigNumber, configId: number, account: string) => {
     return contract.stake(amount, configId, { from: account })
 }
-export const addstakes = (contract: MTB_Staking, account: string, addEarned: boolean) => {
+export const userStakes = (contract: MTB_Staking, account: string, addEarned: boolean) => {
     return contract.accountStakes(account, addEarned);
 }
 export const withDrawStake = async (contract: MTB_Staking, amount: BigNumber, stakeID: number, account: string) => {
@@ -38,12 +38,4 @@ export const getReward = async (contract: MTB_Staking, stakeID: number, account:
 }
 export const earnAmount = async (contract: MTB_Staking, acount: string, index: number) => {
     return contract.earned(acount, index);
-}
-
-// export const getuserStakes = async (contract: any, account: string, index: number) => {
-//     return contract.methods.allAccountStakes(account, index).call();
-// }
-
-export const startTime = async (contract: MTB_Staking) => {
-    return contract.startTime()
 }

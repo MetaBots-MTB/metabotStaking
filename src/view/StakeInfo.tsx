@@ -7,9 +7,10 @@ import { isEmpty, toFinite } from 'lodash';
 import { useMemo, useState } from 'react';
 import { validateSingle } from 'utils/validate';
 import Loader from 'Components/Loader';
+import { istake } from 'callbacks/types';
 
 
-export default function StakeInfo() {
+function StakeInfo() {
 
     const {loading, locks, create, stakes, earn, withDraw, reward } = useStaking()
 
@@ -19,8 +20,8 @@ export default function StakeInfo() {
     const [amountError, setAmountError] = useState('');
     const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { value } = event.target
-        if (value && toFinite(value) < 20000) {
-            setAmountError("amount should be greater than 20000")
+        if (value && toFinite(value) < 50000) {
+            setAmountError("amount should be greater than 50000")
         } else {
             const { value: amount, error } = validateSingle(value, 'BigNumber');
             if (error) {
@@ -85,10 +86,12 @@ export default function StakeInfo() {
             </div>
             <div className='stake-card-holder'>
                 {isEmpty(stakes) ? null :
-                    stakes.map((stake: any, ind: number) => <StakeCard stake={stake} earn={earn} withDraw={withDraw} reward={reward} key={ind} index={ind} />)
+                    stakes.map((stake:istake , ind: number) => <StakeCard stake={stake} earn={earn} withDraw={withDraw} reward={reward} key={ind} index={ind} />)
                 }
             </div>
         </div>
     );
 }
+
+export default StakeInfo;
 

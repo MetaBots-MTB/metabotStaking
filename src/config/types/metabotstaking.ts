@@ -18,18 +18,19 @@ import { FunctionFragment, Result, EventFragment } from "@ethersproject/abi";
 import { Listener, Provider } from "@ethersproject/providers";
 import { TypedEventFilter, TypedEvent, TypedListener, OnEvent } from "./common";
 
-
-type configureLock = [BigNumber, BigNumber] & { time: BigNumber, apy: BigNumber }
-
-type accountStake = [boolean, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber, BigNumber] & {
-    active: boolean,
-    apy: BigNumber,
-    started: BigNumber,
-    unlock: BigNumber,
-    lastUpdated: BigNumber,
-    stake: BigNumber,
-    currentRewards: BigNumber,
-    withdrawnRewards: BigNumber
+export type configureLock = [BigNumber, BigNumber] & { time: BigNumber, apy: BigNumber }
+export type accountStakes = [[], BigNumber[]] & {
+    stakes: {
+        active: boolean,
+        apy: number,
+        started: BigNumber,
+        unlock: BigNumber,
+        lastUpdated: BigNumber,
+        stake: BigNumber,
+        currentRewards: BigNumber,
+        withdrawnRewards: BigNumber
+    }[],
+    stakesEarned: []
 }
 
 export interface MTB_StakingInterface extends utils.Interface {
@@ -213,7 +214,7 @@ export interface MTB_Staking extends BaseContract {
         allConfiguredLocks(overrides?: CallOverrides): Promise<configureLock[]>
 
         accountStakes(account: string, addEarned: boolean,
-            overrides?: CallOverrides): Promise<accountStake[]>
+            overrides?: CallOverrides): Promise<accountStakes[]>
 
         earned(account: string, stakeId: BigNumber,
             overrides?: CallOverrides): Promise<BigNumber>
@@ -250,7 +251,7 @@ export interface MTB_Staking extends BaseContract {
         overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
 
     accountStakes(account: string, addEarned: boolean,
-        overrides?: CallOverrides): Promise<any[]>
+        overrides?: CallOverrides): Promise<accountStakes>
 
     withdraw(_amount: BigNumber, _stakeId: BigNumber | number,
         overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
