@@ -1,4 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber';
+import { configureLock } from 'config/types/metabotstaking';
 
 export interface istake {
     active: boolean,
@@ -21,4 +22,9 @@ export interface IStakeCard {
 export interface IConnectWallet {
     open: boolean,
     setIsOpen: (isOpen: boolean) => void,
-  }
+}
+
+export interface IDropDown {
+    options: configureLock[],
+    setIndex: (id: number) => void
+}

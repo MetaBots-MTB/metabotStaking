@@ -8,11 +8,14 @@ import { useMemo, useState } from 'react';
 import { validateSingle } from 'utils/validate';
 import Loader from 'Components/Loader';
 import { istake } from 'callbacks/types';
+import { useToken } from 'hooks/useToken';
+import { formatBN } from 'utils/formatters';
 
 
 function StakeInfo() {
 
-    const {loading, locks, create, stakes, earn, withDraw, reward } = useStaking()
+    const { loading, locks, create, stakes, earn, withDraw, reward } = useStaking()
+    const { balance } = useToken()
 
     const [amount, setAmount] = useState<any>()
     const [index, setIndex] = useState<number>()
@@ -39,8 +42,8 @@ function StakeInfo() {
     }
     return (
         <div className="stake-info-sec">
+            <Loader loading={loading} />
             <div className='stake-info'>
-                <Loader loading={loading}/>
                 <div className='stake-info-top'>
                     <h2>Stake</h2>
                     <button className='help-btn'>
@@ -54,21 +57,21 @@ function StakeInfo() {
                 <div className='stake-info-middle'>
                     <p>
                         <span>Input</span>
-                        <span>Balance: 0</span>
-                        <form>
+                        <span>Balance: {formatBN(balance)}</span>
+                        <form className='stake-amount-input'>
                             <input
                                 className='input-coin-amount'
                                 placeholder='0.0'
                                 type="number"
                                 onChange={onChange}
                                 required />
-                            {amountError ? <div style={{ color: 'red' }}>{amountError}</div> : null}
+                            {amountError ? <div className='input-error' style={{ color: 'red' }}>{amountError}</div> : null}
                         </form>
                         <span> <img src={logo} alt='' width='25px' /> Metabot.</span>
                     </p>
                     <p>
-                        <form>
-                            {!isEmpty(locks) ? <Dropdown options={locks} setIndex={setIndex} /> : null}
+                        <form className='stake-apy-form'>
+                            <Dropdown options={locks} setIndex={setIndex} />
                         </form>
                         <br /><br />
                         <a href='#'><span>?</span> Read our term & conditions before proceeding</a>
@@ -85,8 +88,8 @@ function StakeInfo() {
                 </button>
             </div>
             <div className='stake-card-holder'>
-                {isEmpty(stakes) ? null :
-                    stakes.map((stake:istake , ind: number) => <StakeCard stake={stake} earn={earn} withDraw={withDraw} reward={reward} key={ind} index={ind} />)
+                {!stakes.length && isEmpty(earn) ? null :
+                    stakes.map((stake: istake, ind: number) => <StakeCard stake={stake} earn={earn} withDraw={withDraw} reward={reward} key={ind} index={ind} />)
                 }
             </div>
         </div>

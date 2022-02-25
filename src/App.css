@@ -77,6 +77,7 @@ html,body{max-width: 100%;overflow-x: hidden;}
 .stake-info{border: 1px solid #4048a1;border-radius: 15px;padding: 35px;text-align: center;}
 .stake-info-top{
   position: relative;
+  padding-bottom: 40px;
 }
 .stake-info-top button{background: none;color: #fff;cursor: pointer;}
 .stake-info-top button img{height: 48px;}
@@ -129,7 +130,7 @@ html,body{max-width: 100%;overflow-x: hidden;}
 .stake-info-middle form select{color: #c4c4c4;background: none;border: none;border-radius: 3px;padding: 5px;}
 .stake-info-middle form input:focus{outline: 1px solid #1b1f43;}
 .stake-info-middle form select:focus{outline: 1px solid #1b1f43;}
-.stake-info-middle p:nth-child(2) {padding: 15px 30px;}
+.stake-info-middle p:nth-child(2) {padding: 0px 30px;}
 .stake-info-middle p:nth-child(2) a{font-size: 12px;}
 .stake-info-middle p:nth-child(2) span{border-radius: 50%; border:1px solid #c4c4c4;aspect-ratio: 1/1;padding: 1px 6px;font-size: 10px;margin-right: 10px;}
 
@@ -268,19 +269,48 @@ html,body{max-width: 100%;overflow-x: hidden;}
 }
 
 
+.input-error{
+  color: red;
+    text-align: left;
+    padding-left: 3px;
+    padding-top: 6px;
+
+}
+
+.stake-amount-input{
+  display: block !important;
+}
+
+.stake-apy{
+  background: #00000091;
+    border-radius: 5px;
+    padding: 5px;
+}
+.stake-apy-form{
+  display: block !important;
+
+}
+.stake-info-middle p{
+border: none !important;
+font-size: 17px;
+padding: 0px;
+}
+
+.details-stake-info-ul{
+  margin-top: 37px;
+}
+.stake-loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 200;
+  transform: translate(-50%, -50%);
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
+/* media queries */
 
 @media screen and (max-width: 991px) {
   .stake-card-holder{grid-template-columns: 1fr 1fr;}

@@ -4,12 +4,11 @@ import { formatBN, formatDateTime, formatDuration } from 'utils/formatters';
 
 
 function StakeCard({ stake, earn, withDraw, reward, index }: IStakeCard) {
-
     return (
         <div className="stake-card">
             <img src={logo} />
             <h2>Stake {index + 1}</h2>
-            <ul>
+            <ul className='details-stake-info-ul'>
                 <li>
                     <span>Staked Amount</span>
                     <span>{formatBN(stake.stake)} $Metabot</span>
@@ -24,7 +23,7 @@ function StakeCard({ stake, earn, withDraw, reward, index }: IStakeCard) {
                 </li>
                 <li>
                     <span>Apy</span>
-                    <span>{stake.apy/100}%</span>
+                    <span>{stake.apy / 100}%</span>
                 </li>
                 <li>
                     <span>withdrawnRewards Amount</span>

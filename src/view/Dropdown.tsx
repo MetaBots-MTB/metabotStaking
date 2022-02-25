@@ -1,20 +1,15 @@
 import { useState } from "react";
 import { formatDuration } from "utils/formatters";
 import chevright from "img/svg/chevron-right.svg"
-import { configureLock } from "config/types/metabotstaking";
+import { IDropDown } from "callbacks/types";
 
-export interface IDropDown{
-  options:configureLock[],
-  setIndex:(id:number)=>void
-
-}
 
 function Dropdown({ options, setIndex }:IDropDown) {
   const [isActive, setIsActive] = useState(false);
-  const [selected, setSelected] = useState("Year");
+  const [selected, setSelected] = useState<string>("Select Duration");
 
   return (
-    <div className="dropdown">
+    <div className="dropdown stake-apy">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
         {selected}
         <img src={chevright} />
@@ -30,8 +25,8 @@ function Dropdown({ options, setIndex }:IDropDown) {
               }}
               className="dropdown-item"
             >
-              <p>{option.apy / 100}% apy</p>
-              <p>{formatDuration(option.time.toNumber())} minutes</p>
+              <p>{option.apy / 100}% apy -    
+               {formatDuration(option.time.toNumber())} minutes </p>
             </div>
           )
           )}

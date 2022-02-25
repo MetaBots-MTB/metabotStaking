@@ -9,7 +9,6 @@ import { getTokenAddress } from "utils/addressHelper";
 import { configureLock } from "config/types/metabotstaking";
 import { istake } from "./types";
 
-
 export const useStaking = () => {
 
     const { account } = useActiveWeb3React()
@@ -18,7 +17,7 @@ export const useStaking = () => {
     const { toast, toastTypes } = useToast()
 
     const [loading, setLoading] = useState(false)
-    const [locks, setLocks] = useState<configureLock[]>([])
+    const [locks, setLocks] = useState<configureLock[]>()
 
     const [stakes, setStakes] = useState<istake[]>([])
     const [earn, setEarn] = useState<BigNumber[]>([])
@@ -59,9 +58,9 @@ export const useStaking = () => {
         async (amount: BigNumber, lockIndex: number) => {
             try {
                 setLoading(true)
-                let temp1: ContractTransaction = await approve(tokenContract, amount, account)
+                let tx: ContractTransaction = await approve(tokenContract, amount, account)
                 toast(toastTypes.info, "Info", "Approve Amount is in proceess")
-                const success1 = await handleTransaction(temp1)
+                const success1 = await handleTransaction(tx)
                 if (success1) {
                     toast(toastTypes.success, "Success", "Amount Approved")
                     const tx: ContractTransaction = await addStake(stakingContract, amount, lockIndex, account)
@@ -83,7 +82,7 @@ export const useStaking = () => {
                 const tx: ContractTransaction = await withDrawStake(stakingContract, amount, stakeID, account)
                 toast(toastTypes.info, "Info", "Transaction is in proceess")
                 const success = await handleTransaction(tx)
-                if (success) getStakes(account); toast(toastTypes.success, "Success", "WithDrawn Succeed")
+                if (success) getStakes(account); toast(toastTypes.success, "Success", "WithDrawn amount successfully")
             } catch (error) {
                 alert((error as any).message)
             } finally {
@@ -97,7 +96,7 @@ export const useStaking = () => {
             const tx: ContractTransaction = await getReward(stakingContract, stakeID, account)
             toast(toastTypes.info, "Info", "Transaction is in proceess")
             const success = await handleTransaction(tx)
-            if (success) getStakes(account); toast(toastTypes.success, "Success", "Rewards sent")
+            if (success) getStakes(account); toast(toastTypes.success, "Success", "Rewards sent successfully")
             setLoading(false)
         }, [stakingContract])
 
