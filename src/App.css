@@ -9,13 +9,14 @@ html,body{max-width: 100%;overflow-x: hidden;}
   padding: 1% 5%;
   z-index: 7;
   transition: all 250ms ease;
-  display: flex;
+  display: block;
   align-items: center;
 }
 
 .logo {
   width: 75px;
-  transition: width 250ms ease
+  transition: width 250ms ease;
+  display: inline-block;
 }
 
 .header-scroll .logo {
@@ -58,8 +59,8 @@ html,body{max-width: 100%;overflow-x: hidden;}
 }
 
 .header .account-address{
-  position: absolute;
-    right: 5%;
+  display: inline-block;
+  float: right;
 }
 
 .account-address{
@@ -126,7 +127,7 @@ html,body{max-width: 100%;overflow-x: hidden;}
 }
 .stake-info .button{width: 70%;margin: auto;font-size: 28px;margin-top: 25px;}
 .stake-info-middle form{display: flex;gap: 30px;}
-.stake-info-middle form input{color: #c4c4c4;background: none;border: 1px solid #1b1f43;border-radius: 5px;padding: 5px 10px;width: 60px;}
+.stake-info-middle form input{color: #ffffff;background: #000000;border: 1px solid #ffffff;border-radius: 5px;padding: 5px 10px;width: 60px;}
 .stake-info-middle form select{color: #c4c4c4;background: none;border: none;border-radius: 3px;padding: 5px;}
 .stake-info-middle form input:focus{outline: 1px solid #1b1f43;}
 .stake-info-middle form select:focus{outline: 1px solid #1b1f43;}
@@ -285,6 +286,7 @@ html,body{max-width: 100%;overflow-x: hidden;}
   background: #00000091;
     border-radius: 5px;
     padding: 5px;
+    border: 1px solid #ffffff;
 }
 .stake-apy-form{
   display: block !important;
@@ -328,11 +330,24 @@ padding: 0px;
   .stake-info-middle p{margin: 0;}
   .stake-info-middle form{justify-content: center;}
   .help-info{background-image: url(./img/full-bg.jpg);}
+  .stake-card-holder {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media screen and (max-width: 580px) {
   .stake-card-holder{grid-template-columns: 1fr;}
 
+}
+@media screen and (max-width:464px){
+  .header{
+    text-align: center;
+  }
+  .header .account-address{
+    float: none;
+    margin-top: 15px;
+    overflow-wrap: anywhere;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -343,8 +358,13 @@ padding: 0px;
   .stake-info-middle p:first-of-type{width: -webkit-fill-available;}
   .stake-info-middle p{width: -webkit-fill-available;}
   .help-btn{right: 0;}
-  .input-coin-amount{width: 60px !important;}
+  .input-coin-amount{width: 100px !important;}
   .header ul{margin-left: 20px;gap: 20px;}
   .header{padding: 15px 5px;}
   .stake-info .button{width: 100%;}
+}
+@media screen and (max-width: 305px) {
+  
+  .input-coin-amount{width: 70px !important;}
+
 }

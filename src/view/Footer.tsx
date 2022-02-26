@@ -8,7 +8,7 @@ function Footer() {
   return (
       <div className="copyright-bar">
         <span
-          >MetaBots © P2E Game. Powered by <i>Passive-Income ©</i>. All rights
+          >MetaBots © P2E Game. Powered by <i>Passive Income ©</i>. All rights
           reserved.</span
         >
         <span>

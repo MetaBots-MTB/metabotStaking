@@ -46,18 +46,12 @@ function StakeInfo() {
             <div className='stake-info'>
                 <div className='stake-info-top'>
                     <h2>Stake</h2>
-                    <button className='help-btn'>
-                        ?
-                        <p className='help-info'>Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            elit. Aenean commodo ligula eget dolor. Aenean massa.
-                            Cum sociis natoque penatibus et magnis dis parturient
-                            montes, nascetur ridiculus mus.</p>
-                    </button>
+                   
                 </div>
                 <div className='stake-info-middle'>
                     <p>
                         <span>Input</span>
-                        <span>Balance: {formatBN(balance)}</span>
+                        <span>Balance: {parseFloat(formatBN(balance)).toFixed(5)}</span>
                         <form className='stake-amount-input'>
                             <input
                                 className='input-coin-amount'
@@ -67,7 +61,7 @@ function StakeInfo() {
                                 required />
                             {amountError ? <div className='input-error' style={{ color: 'red' }}>{amountError}</div> : null}
                         </form>
-                        <span> <img src={logo} alt='' width='25px' /> Metabot.</span>
+                        <span> <img src={logo} alt='' width='25px' /> Metabots</span>
                     </p>
                     <p>
                         <form className='stake-apy-form'>

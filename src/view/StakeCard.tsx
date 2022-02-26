@@ -26,11 +26,11 @@ function StakeCard({ stake, earn, withDraw, reward, index }: IStakeCard) {
                     <span>{stake.apy / 100}%</span>
                 </li>
                 <li>
-                    <span>withdrawnRewards Amount</span>
+                    <span>Withdrawn Rewards Amount</span>
                     <span>{formatBN(stake.withdrawnRewards)}</span>
                 </li>
                 <li>
-                    <span>lastUpdated</span>
+                    <span>Last Updated</span>
                     <span>{formatDateTime(stake.lastUpdated.toNumber() * 1000)}</span>
                 </li>
             </ul>

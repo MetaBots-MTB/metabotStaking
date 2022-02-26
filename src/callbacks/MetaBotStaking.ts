@@ -60,8 +60,8 @@ export const useStaking = () => {
                 setLoading(true)
                 let tx: ContractTransaction = await approve(tokenContract, amount, account)
                 toast(toastTypes.info, "Info", "Approve Amount is in proceess")
-                const success1 = await handleTransaction(tx)
-                if (success1) {
+                const success = await handleTransaction(tx)
+                if (success) {
                     toast(toastTypes.success, "Success", "Amount Approved")
                     const tx: ContractTransaction = await addStake(stakingContract, amount, lockIndex, account)
                     toast(toastTypes.info, "transaction Info", "Creating Stake is in proceess")
