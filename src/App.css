@@ -2,7 +2,7 @@ a{text-decoration: none;color: inherit;}
 a:hover{text-decoration: none;color: inherit;}
 li{list-style: none;}
 ul{padding: 0;margin: 0;}
-.App{background-image: url(./img/stake-bg.jpg);background-size: cover;min-height: 100vh;width: 100%;background-position: center;}
+.App{background-image: url(./img/stake-bg.jpg);background-size: cover;}
 html,body{max-width: 100%;overflow-x: hidden;}
 .header {
   position: relative;
@@ -38,9 +38,9 @@ html,body{max-width: 100%;overflow-x: hidden;}
 .header ul li a:hover {
   color: #6ab3f4;
 }
-.header .button{
-  position: absolute;
-    right: 5%;
+.header .walletconnect{
+  display: inline-block;
+  float: right;
 }
 .button{
     background: none;
@@ -117,7 +117,7 @@ html,body{max-width: 100%;overflow-x: hidden;}
 }
 .stake-info-middle span{text-align: left;}
 .stake-info-middle span:nth-child(2){text-align: right;}
-.stake-info-middle span:nth-child(4){gap: 7px;display: flex;color: #4048a1;justify-content: flex-end;align-items: center;}
+.stake-info-middle span:nth-child(4){color: #4048a1;text-align: right;}
 .stake-info-middle p:first-of-type{
   display: grid;
   justify-items: stretch;
@@ -144,7 +144,7 @@ html,body{max-width: 100%;overflow-x: hidden;}
 .stake-card span:last-of-type{color: #fff;text-align: right;}
 .stake-card ul:last-of-type{border-top: 1px solid #4048a1;color: #fff;}
 .stake-card .button{font-size: 12px;}
-.input-coin-amount{width: unset !important;}
+.input-coin-amount{width: 100% !important;}
 .input-coin-amount::-webkit-outer-spin-button,
 .input-coin-amount::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -316,6 +316,11 @@ padding: 0px;
 
 @media screen and (max-width: 991px) {
   .stake-card-holder{grid-template-columns: 1fr 1fr;}
+
+  .stake-info-middle{
+    flex-direction: column;
+    align-items: center;
+  }
 }
 @media screen and (max-width: 769px) {
   .header{padding: 15px;font-size: 12px;}
@@ -325,7 +330,7 @@ padding: 0px;
   .back-btn {height: 60px;}
   .stake-info-top h2 {margin: 0;}
   .stake-info-middle{flex-direction: column;align-items: center;}
-  .stake-info-middle p:nth-child(2){padding: 15px;}
+  .stake-info-middle p:nth-child(2){padding: 0px;}
   .stake-info-middle p:first-of-type{margin-top: 20px;}
   .stake-info-middle p{margin: 0;}
   .stake-info-middle form{justify-content: center;}
@@ -348,6 +353,12 @@ padding: 0px;
     margin-top: 15px;
     overflow-wrap: anywhere;
   }
+  .walletconnect{
+    float: none !important;
+    margin-top: 15px !important;
+    display: block !important;
+    margin: auto;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -358,13 +369,7 @@ padding: 0px;
   .stake-info-middle p:first-of-type{width: -webkit-fill-available;}
   .stake-info-middle p{width: -webkit-fill-available;}
   .help-btn{right: 0;}
-  .input-coin-amount{width: 100px !important;}
   .header ul{margin-left: 20px;gap: 20px;}
   .header{padding: 15px 5px;}
   .stake-info .button{width: 100%;}
-}
-@media screen and (max-width: 305px) {
-  
-  .input-coin-amount{width: 70px !important;}
-
 }

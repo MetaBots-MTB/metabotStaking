@@ -61,7 +61,7 @@ function StakeInfo() {
                                 required />
                             {amountError ? <div className='input-error' style={{ color: 'red' }}>{amountError}</div> : null}
                         </form>
-                        <span> <img src={logo} alt='' width='25px' /> Metabots</span>
+                        <span> <img src={logo} alt='' width='25px' /> MTB</span>
                     </p>
                     <p>
                         <form className='stake-apy-form'>

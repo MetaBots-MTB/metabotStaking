@@ -84,7 +84,7 @@ export const useStaking = () => {
                 const success = await handleTransaction(tx)
                 if (success) getStakes(account); toast(toastTypes.success, "Success", "WithDrawn amount successfully")
             } catch (error) {
-                alert((error as any).message)
+                toast(toastTypes.error, "Error", (error as any).message)
             } finally {
                 setLoading(false)
             }

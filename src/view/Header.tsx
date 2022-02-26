@@ -11,7 +11,7 @@ function Header() {
     <div className="header">
       <img className='logo' src={logo} alt='' />
       {account ? <div className='account-address'>{account}</div> : <>
-        <button onClick={() => setIsOpen(true)} className='button'>
+        <button onClick={() => setIsOpen(true)} className='button walletconnect'>
           Connect to a wallet
         </button>
         <ConnectWallet open={isOpen} setIsOpen={setIsOpen} />
