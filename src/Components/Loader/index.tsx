@@ -11,7 +11,7 @@ const Loader: React.FC<Props> = ({ loading }) => {
 
   return (
     <div style={{ position: 'absolute', top: '50%', left: '50%', zIndex: '200', transform: translate }}>
-      {true ? <ReactLoading type="spokes" color="#5e6eff" height={200} width={200} /> : null}
+      {loading ? <ReactLoading type="spokes" color="#5e6eff" height={200} width={200} /> : null}
     </div>
   )
 }
