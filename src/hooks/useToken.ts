@@ -1,25 +1,32 @@
-import { BigNumber } from "ethers"
-import { useEffect, useState } from "react"
-import { getTokenAddress } from "utils/addressHelper"
-import { tokenBalance } from "utils/callHelper"
+import { useCallback, useEffect, useState } from "react"
+import { getstakeAddress, getTokenAddress } from "utils/addressHelper"
+import { fetchToken, Token } from "utils/callHelper"
 import { useBEP20 } from "./useContract"
 import { useActiveWeb3React } from "./web3"
-
 
 
 export const useToken = () => {
 
     const { account } = useActiveWeb3React()
-    const tokenContract = useBEP20(getTokenAddress())
-    const [balance, setBalance] = useState<BigNumber>()
+    const [token, setToken] = useState<Token>()
+    const [isLoadingToken, setLoading] = useState(false)
 
-    const getBalance = async () => {
-        const temp = await tokenBalance(tokenContract, account)
-        setBalance(temp)
-    }
+    const getToken = useCallback(async () => {
+        setLoading(true)
+        try {
+            const receipt = await fetchToken(getTokenAddress(), account,getstakeAddress())
+            setToken(receipt)
+        } catch (error) {
+            console.log('err', error)
+        } finally {
+            setLoading(true)
+        }
+    }, [account, getTokenAddress()])
+
     useEffect(() => {
-        if (account) getBalance()
+        if (account) getToken()
     }, [account])
 
-    return { balance }
+
+    return { token, isLoadingToken ,getToken}
 }

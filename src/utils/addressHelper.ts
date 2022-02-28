@@ -9,10 +9,13 @@ export const getAddress = (address: Address): string => {
     return address[chainId] ? address[chainId] : address[mainNetChainId]
 }
 
-export const getstakeAddress =()=>{
+export const getstakeAddress = () => {
     return getAddress(addresses.MTB_staking)
 }
 
-export const getTokenAddress =()=>{
+export const getTokenAddress = () => {
     return getAddress(addresses.MetaBotToken)
+}
+export const getMulticallAddress = () => {
+    return getAddress(addresses.multiCall)
 }

@@ -6,6 +6,74 @@ import { Contract, ContractTransaction, ContractReceipt } from '@ethersproject/c
 import { BigNumber } from '@ethersproject/bignumber';
 
 
+
+import IBEP20Abi from 'config/abi/IBEP20.json'
+import { first, toFinite } from 'lodash'
+import { toBigNumber, toBool } from 'utils/converters'
+import { Call, nestedMulticall } from 'utils/multicall'
+
+
+export interface Token {
+    address: string
+    name: string
+    symbol?: string // ERC1155 does not have a symbol in most cases
+    decimals?: number
+    totalSupply?: BigNumber
+    accountBalance?: BigNumber
+    approvals?: { [spender: string]: BigNumber }
+    // approvalForAll?: { [spender: string]: boolean }
+}
+
+export const fetchTokens = async (
+    tokenAddresses: string[],
+    account?: string,
+    spender?: string,
+): Promise<Token[]> => {
+    if (!tokenAddresses) return []
+
+    const nestedCalls: Call[][] = tokenAddresses.map((tokenAddress) => {
+        const calls: Call[] = []
+        calls.push({ address: tokenAddress, name: 'name' })
+        calls.push({ address: tokenAddress, name: 'symbol' })
+        calls.push({ address: tokenAddress, name: 'decimals' })
+        calls.push({ address: tokenAddress, name: 'totalSupply' })
+
+        if (account) {
+            calls.push({ address: tokenAddress, name: 'balanceOf', params: [account] })
+            if (spender) calls.push({ address: tokenAddress, name: 'allowance', params: [account, spender] })
+        }
+        return calls
+    })
+
+    const tokensData = await nestedMulticall(IBEP20Abi, nestedCalls)
+
+    return tokensData?.reduce((result: Token[], tokenData: any[], idx: number) => {
+        const token: Token = {
+            address: tokenAddresses[idx].toLowerCase(),
+            name: tokenData[0],
+            symbol: tokenData[1],
+            decimals: toFinite(tokenData[2]),
+            totalSupply: toBigNumber(tokenData[3]),
+        }
+        if (account) token.accountBalance = toBigNumber(tokenData[4])
+        if (account && spender) token.approvals = { ...token.approvals, [spender]: toBigNumber(tokenData[5]) }
+        else token.approvals = {}
+        return [...result, token]
+    }, [])
+}
+
+export const fetchToken = async (tokenAddress: string, account?: string, spender?: string): Promise<Token> => {
+    const tokens = await fetchTokens([tokenAddress], account, spender)
+    return first(tokens)
+}
+
+
+
+
+
+
+
+
 export const handleTransaction = async (transaction: ContractTransaction) => {
     const receipt = await transaction.wait()
     // if (dispatch) handleReceipt(receipt, dispatch)
@@ -13,11 +81,15 @@ export const handleTransaction = async (transaction: ContractTransaction) => {
 }
 
 // token calls
-export const tokenBalance = async (contract: IBEP20, account: string) => {
+export const tokenBalance = (contract: IBEP20, account: string) => {
     return contract.balanceOf(account);
 }
-export const approve = (contract: IBEP20, amount: BigNumber, account: string) => {
-    return contract.approve(getstakeAddress(), amount, { from: account })
+export const approve = (contract: IBEP20, amount: BigNumber,spender:string, account: string) => {
+    return contract.approve(spender, amount, { from: account })
+}
+
+export const allowanceToken = (contract: IBEP20, owner: string, spender: string) => {
+    return contract.allowance(owner, spender)
 }
 
 // stake calls

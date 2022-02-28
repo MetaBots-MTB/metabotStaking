@@ -36,7 +36,7 @@ export const formatDuration = (value: string | number, unix = true) => {
   return moment.duration(numberValue * (unix ? 1000 : 1)).format()
 }
 
-export const formatBN = (value: BigNumberish | BigNumber, decimals = 18) => {
+export const formatBN = (value:BigNumber | BigNumberish  , decimals = 18) => {
   if (isUndefined(value) || isNil(value)) return ""
   const bn = !isObject(value) ? BigNumber.from(value.toString()) : value as BigNumber
   return utils.formatUnits(bn, decimals ?? 0)
