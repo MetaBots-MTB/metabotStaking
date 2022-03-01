@@ -17,7 +17,7 @@ import { BigNumber } from 'ethers';
 function StakeInfo() {
 
     const { loading, locks, create, stakes, earn, withDraw, reward } = useStaking()
-    const { token,isLoadingToken, approve, approving, approvedAmount } = useTokenApproval()
+    const { token, isLoadingToken, approve, approving, approvedAmount } = useTokenApproval()
 
     const [amount, setAmount] = useState<any>(0)
     const [index, setIndex] = useState<number>()
@@ -45,13 +45,13 @@ function StakeInfo() {
         event.preventDefault()
         if (amount > 0 && !approving) approve(toBigNumber(amount))
     }
-    const valid = useMemo(() => isEmpty(amountError) && approvedAmount.gte(toBigNumber(amount)) && !isNil(index), [index,amountError, approvedAmount, amount])
-    const approveValid = useMemo(() => isEmpty(amountError) && amount && !isNil(index), [index,amountError, amount])
+    const valid = useMemo(() => isEmpty(amountError) && approvedAmount.gte(toBigNumber(amount)) && !isNil(index), [index, amountError, approvedAmount, amount])
+    const approveValid = useMemo(() => isEmpty(amountError) && amount && !isNil(index), [index, amountError, amount])
     const onSubmit = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault()
         if (amount) create(amount, index)
     }
-    const isloading = loading || isLoadingToken
+    const isloading = loading || isLoadingToken || approving
     return (
         <div className="stake-info-sec">
             <Loader loading={isloading} />
