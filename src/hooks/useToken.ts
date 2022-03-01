@@ -19,9 +19,9 @@ export const useToken = () => {
         } catch (error) {
             console.log('err', error)
         } finally {
-            setLoading(true)
+            setLoading(false)
         }
-    }, [account, getTokenAddress()])
+    }, [account, getTokenAddress])
 
     useEffect(() => {
         if (account) getToken()

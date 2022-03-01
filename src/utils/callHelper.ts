@@ -1,7 +1,6 @@
 // import BigNumber from 'bignumber.js'
 import { MTB_Staking } from 'config/types/metabotstaking';
 import { IBEP20 } from 'config/types/IBEP20';
-import { getstakeAddress } from './addressHelper';
 import { Contract, ContractTransaction, ContractReceipt } from '@ethersproject/contracts'
 import { BigNumber } from '@ethersproject/bignumber';
 
@@ -9,7 +8,7 @@ import { BigNumber } from '@ethersproject/bignumber';
 
 import IBEP20Abi from 'config/abi/IBEP20.json'
 import { first, toFinite } from 'lodash'
-import { toBigNumber, toBool } from 'utils/converters'
+import { toBigNumber } from 'utils/converters'
 import { Call, nestedMulticall } from 'utils/multicall'
 
 
@@ -21,9 +20,14 @@ export interface Token {
     totalSupply?: BigNumber
     accountBalance?: BigNumber
     approvals?: { [spender: string]: BigNumber }
-    // approvalForAll?: { [spender: string]: boolean }
 }
 
+export const handleTransaction = async (transaction: ContractTransaction) => {
+    const receipt = await transaction.wait()
+    return receipt.status > 0
+}
+
+// token callAPi
 export const fetchTokens = async (
     tokenAddresses: string[],
     account?: string,
@@ -37,7 +41,6 @@ export const fetchTokens = async (
         calls.push({ address: tokenAddress, name: 'symbol' })
         calls.push({ address: tokenAddress, name: 'decimals' })
         calls.push({ address: tokenAddress, name: 'totalSupply' })
-
         if (account) {
             calls.push({ address: tokenAddress, name: 'balanceOf', params: [account] })
             if (spender) calls.push({ address: tokenAddress, name: 'allowance', params: [account, spender] })
@@ -46,7 +49,6 @@ export const fetchTokens = async (
     })
 
     const tokensData = await nestedMulticall(IBEP20Abi, nestedCalls)
-
     return tokensData?.reduce((result: Token[], tokenData: any[], idx: number) => {
         const token: Token = {
             address: tokenAddresses[idx].toLowerCase(),
@@ -61,37 +63,13 @@ export const fetchTokens = async (
         return [...result, token]
     }, [])
 }
-
 export const fetchToken = async (tokenAddress: string, account?: string, spender?: string): Promise<Token> => {
     const tokens = await fetchTokens([tokenAddress], account, spender)
     return first(tokens)
 }
-
-
-
-
-
-
-
-
-export const handleTransaction = async (transaction: ContractTransaction) => {
-    const receipt = await transaction.wait()
-    // if (dispatch) handleReceipt(receipt, dispatch)
-    return receipt.status > 0
-}
-
-// token calls
-export const tokenBalance = (contract: IBEP20, account: string) => {
-    return contract.balanceOf(account);
-}
-export const approve = (contract: IBEP20, amount: BigNumber,spender:string, account: string) => {
+export const approve = (contract: IBEP20, amount: BigNumber, spender: string, account: string) => {
     return contract.approve(spender, amount, { from: account })
 }
-
-export const allowanceToken = (contract: IBEP20, owner: string, spender: string) => {
-    return contract.allowance(owner, spender)
-}
-
 // stake calls
 export const configureLocks = async (contract: MTB_Staking) => {
     return contract.allConfiguredLocks()
