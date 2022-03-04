@@ -55,46 +55,70 @@ function StakeInfo() {
     return (
         <div className="stake-info-sec">
             <Loader loading={isloading} />
-            <div className='stake-info'>
-                <div className='stake-info-top'>
-                    <h2>Stake</h2>
-                </div>
-                <div className='stake-info-middle'>
-                    <p>
-                        <span>Input</span>
-                        <span>Balance: {!isEmpty(token) ? parseFloat(formatBN(token.accountBalance)).toFixed(5) : 0}</span>
 
-                        <form className='stake-amount-input'>
-                            <input
-                                className='input-coin-amount'
-                                placeholder='0.0'
-                                type="number"
-                                onChange={onChange}
-                                required />
-                            {amountError ? <div className='input-error' style={{ color: 'red' }}>{amountError}</div> : null}
-                        </form>
-                        <span> <img src={logo} alt='' width='25px' /> MTB</span>
-                    </p>
-                    <p>
-                        <form className='stake-apy-form'>
-                            <Dropdown options={locks} setIndex={setIndex} />
-                        </form>
-                        <br /><br />
-                        <a href='#'><span>?</span> Read our term & conditions before proceeding</a>
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing
-                        elit. Aenean commodo ligula eget dolor. Aenean massa.
-                        Cum sociis natoque penatibus et magnis dis parturient
-                        montes, nascetur ridiculus mus.
-                    </p>
+
+            <div className='row'>
+                <div className='col-lg-6'>
+                    <div className='stake-info'>
+                        <div className='stake-info-top'>
+                            <h2>Stake</h2>
+                        </div>
+                        <div className='stake-info-middle'>
+                            <p>
+                                <span>Input</span>
+                                <span>Balance: {!isEmpty(token) ? parseFloat(formatBN(token.accountBalance)).toFixed(5) : 0}</span>
+
+                                <form className='stake-amount-input'>
+                                    <input
+                                        className='input-coin-amount'
+                                        placeholder='0.0'
+                                        type="number"
+                                        onChange={onChange}
+                                        required />
+                                    {amountError ? <div className='input-error' style={{ color: 'red' }}>{amountError}</div> : null}
+                                </form>
+                                <span> <img src={logo} alt='' width='25px' /> MTB</span>
+                            </p>
+                            <p>
+                                <form className='stake-apy-form'>
+                                    <Dropdown options={locks} setIndex={setIndex} />
+                                </form>
+                                <br /><br />
+                                <a href='' onClick={(e)=>e.preventDefault()}><span>?</span> Read our term & conditions before proceeding</a>
+                            </p>
+                        </div>
+                        {isApproved ? <button className='button' disabled={!valid} onClick={onSubmit}>
+                            Stake
+                        </button> :
+                            <button className='button' disabled={!approveValid} onClick={onAprrove}>Approve</button>
+                        }
+                    </div>
+
                 </div>
-                {isApproved ? <button className='button' disabled={!valid} onClick={onSubmit}>
-                    Stake
-                </button> :
-                    <button className='button' disabled={!approveValid} onClick={onAprrove}>Approve</button>
-                }
+                
+
+                <div className='col-lg-6 d-lg-flex flex-lg-column mt-5 mt-lg-1 mb-lg-1 justify-content-lg-between'>
+                    <div className='mb-3 mb-lg-0'>
+                        <p className='text-white mb-2'>Tier 1 Staking : 6% APY - 3 months lock</p>
+                        <p className='text-white mb-0'>Tier 2 Staking : 15% APY - 6 months lock</p>
+                    </div>
+                    <div className='mb-3 mb-lg-0'>
+                        <p className='h3' style={{color:'#4048a1'}}>PRELAUNCH STAKING AVAILABLE!</p>
+                        <p className='text-color mb-1'>Every wallet that stakes 333,000 tokens BEFORE launch receives 1 free NFT with a max of 6 NFTs (full complete robot) - this can take place up to 6 times.</p>
+                        <p className='mb-0 text-color'>ie. 1,999,000 staked would receive 6 NFTs to claim when available</p>
+                    </div>
+                    <div className='mb-3 mb-lg-0'>
+                        <p className='text-color mb-1'>After launch, staking will be a minimum of 666,000 tokens to get 1 free NFT with an max of 6 NFTs.</p>
+                        <p className='mb-0 text-color'>i.e. 3,996,000 staked would receive 6 NFTs to claim when available.</p>
+                    </div>
+                    <div className='mb-3 mb-lg-0'>
+                        <p className='text-color  mb-0'>Prelaunch stakers will receive their NFTs early with the game launch, while post launch stakers will receive at the end of lock period.</p>
+                    </div>
+                </div>
+
             </div>
+
+
             <div className='stake-card-holder'>
                 {!stakes.length && isEmpty(earn) ? null :
                     stakes.map((stake: istake, ind: number) => <StakeCard stake={stake} earn={earn} withDraw={withDraw} reward={reward} key={ind} index={ind} />)
