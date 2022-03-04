@@ -12,6 +12,7 @@ import { formatBN } from 'utils/formatters';
 import { useTokenApproval } from 'hooks/useApproval';
 import { toBigNumber } from 'utils/converters';
 import { BigNumber } from 'ethers';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function StakeInfo() {
@@ -58,7 +59,6 @@ function StakeInfo() {
             <div className='stake-info'>
                 <div className='stake-info-top'>
                     <h2>Stake</h2>
-
                 </div>
                 <div className='stake-info-middle'>
                     <p>
@@ -102,6 +102,7 @@ function StakeInfo() {
                     stakes.map((stake: istake, ind: number) => <StakeCard stake={stake} earn={earn} withDraw={withDraw} reward={reward} key={ind} index={ind} />)
                 }
             </div>
+
         </div>
     );
 }

@@ -72,6 +72,7 @@ export const approve = (contract: IBEP20, amount: BigNumber, spender: string, ac
 }
 // stake calls
 export const configureLocks = async (contract: MTB_Staking) => {
+    console.log('asdfasdf',contract)
     return contract.allConfiguredLocks()
 }
 export const addStake = async (contract: MTB_Staking, amount: BigNumber, configId: number, account: string) => {

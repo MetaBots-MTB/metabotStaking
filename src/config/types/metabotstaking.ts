@@ -245,7 +245,7 @@ export interface MTB_Staking extends BaseContract {
             overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>
     }
 
-    allConfiguredLocks(overrides?: CallOverrides): Promise<configureLock[]>
+    allConfiguredLocks(overrides?: CallOverrides): Promise<configureLock[] |null>
 
     stake(_amount: BigNumber, _configuredLock: BigNumber | number,
         overrides?: Overrides & { from?: string | Promise<string> }): Promise<ContractTransaction>

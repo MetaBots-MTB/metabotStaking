@@ -4,9 +4,11 @@ import chevright from "img/svg/chevron-right.svg"
 import { IDropDown } from "callbacks/types";
 
 
-function Dropdown({ options, setIndex }:IDropDown) {
+function Dropdown({ options, setIndex }: IDropDown) {
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState<string>("Select Duration");
+
+  console.log('asdf', options)
 
   return (
     <div className="dropdown stake-apy">
@@ -16,6 +18,7 @@ function Dropdown({ options, setIndex }:IDropDown) {
       </div>
       {isActive && (
         <div className="dropdown-content">
+          {options === undefined ? console.log('Test') : null}
           {Object.values(options).map((option: any, ind: number) => (
             <div key={ind}
               onClick={() => {
@@ -25,8 +28,8 @@ function Dropdown({ options, setIndex }:IDropDown) {
               }}
               className="dropdown-item"
             >
-              <p>{option.apy / 100}% apy -    
-               {formatDuration(option.time.toNumber())} minutes </p>
+              <p>{option.apy / 100}% apy -
+                {formatDuration(option.time.toNumber())} minutes </p>
             </div>
           )
           )}

@@ -9,6 +9,8 @@ import { configureLock } from "config/types/metabotstaking";
 import { istake } from "./types";
 import { useToken } from "hooks/useToken";
 
+
+
 export const useStaking = () => {
 
     const { account } = useActiveWeb3React()
@@ -31,6 +33,7 @@ export const useStaking = () => {
                 setEarn(temp.stakesEarned)
             } catch (error) {
                 // alert((error as any).message)
+
             } finally {
                 setLoading(false)
             }
@@ -43,7 +46,7 @@ export const useStaking = () => {
                 const configLog = await configureLocks(stakingContract)
                 setLocks(configLog)
             } catch (error) {
-                console.log('err', error)
+                console.log('erreasdfas', error)
             } finally {
                 setLoading(false)
             }

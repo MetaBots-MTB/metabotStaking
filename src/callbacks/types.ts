@@ -25,6 +25,6 @@ export interface IConnectWallet {
 }
 
 export interface IDropDown {
-    options: configureLock[],
+    options: configureLock[] | undefined,
     setIndex: (id: number) => void
 }
