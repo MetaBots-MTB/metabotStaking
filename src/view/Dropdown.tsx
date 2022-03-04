@@ -8,8 +8,6 @@ function Dropdown({ options, setIndex }: IDropDown) {
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState<string>("Select Duration");
 
-  console.log('asdf', options)
-
   return (
     <div className="dropdown stake-apy">
       <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
@@ -18,21 +16,23 @@ function Dropdown({ options, setIndex }: IDropDown) {
       </div>
       {isActive && (
         <div className="dropdown-content">
-          {options === undefined ? console.log('Test') : null}
-          {Object.values(options).map((option: any, ind: number) => (
-            <div key={ind}
-              onClick={() => {
-                setIndex(ind)
-                setSelected(`${option.apy / 100}% apy ${formatDuration(option.time.toNumber())} minutes`);
-                setIsActive(false);
-              }}
-              className="dropdown-item"
-            >
-              <p>{option.apy / 100}% apy -
-                {formatDuration(option.time.toNumber())} minutes </p>
-            </div>
-          )
-          )}
+          {options === undefined ? null : <>
+            {Object.values(options).map((option: any, ind: number) => (
+              <div key={ind}
+                onClick={() => {
+                  setIndex(ind)
+                  setSelected(`${option.apy / 100}% apy ${formatDuration(option.time.toNumber())} minutes`);
+                  setIsActive(false);
+                }}
+                className="dropdown-item"
+              ><div style={{color:'white'}}> {option.apy / 100}% apy - {formatDuration(option.time.toNumber())} minutes </div> 
+              </div>
+            )
+            )}
+
+
+          </>}
+
         </div>
       )}
     </div>

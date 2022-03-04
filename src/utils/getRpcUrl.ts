@@ -5,8 +5,7 @@ export const nodes = [process.env.REACT_APP_NODE_1, process.env.REACT_APP_NODE_2
 
 const getNodeUrl = () => {
   const randomIndex = random(0, nodes.length - 1)
-  console.log('randomIndex',randomIndex)
-  return nodes[2]
+  return nodes[randomIndex]
 
 }
 

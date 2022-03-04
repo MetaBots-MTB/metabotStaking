@@ -12,7 +12,6 @@ import { formatBN } from 'utils/formatters';
 import { useTokenApproval } from 'hooks/useApproval';
 import { toBigNumber } from 'utils/converters';
 import { BigNumber } from 'ethers';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function StakeInfo() {
@@ -95,7 +94,6 @@ function StakeInfo() {
                 </button> :
                     <button className='button' disabled={!approveValid} onClick={onAprrove}>Approve</button>
                 }
-
             </div>
             <div className='stake-card-holder'>
                 {!stakes.length && isEmpty(earn) ? null :

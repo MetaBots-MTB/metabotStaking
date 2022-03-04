@@ -46,7 +46,7 @@ export const useStaking = () => {
                 const configLog = await configureLocks(stakingContract)
                 setLocks(configLog)
             } catch (error) {
-                console.log('erreasdfas', error)
+                // console.log('sasd', error)
             } finally {
                 setLoading(false)
             }
