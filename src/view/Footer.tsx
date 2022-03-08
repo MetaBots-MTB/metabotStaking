@@ -26,7 +26,7 @@ function Footer() {
               /></a>
             </li>
             <li>
-              <a target="_blank" href="https://t.me/Metabots"
+              <a target="_blank" href="https://t.me/metabotsp2e"
                 ><img className="icon-footer" src={telegram}
               /></a>
             </li>
