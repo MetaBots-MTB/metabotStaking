@@ -100,7 +100,7 @@ function StakeInfo() {
                 <div className='col-lg-6 d-lg-flex flex-lg-column mt-5 mt-lg-1 mb-lg-1 justify-content-lg-between'>
                     <div className='mb-3 mb-lg-0'>
                         <p className='text-white mb-2'>Tier 1 Staking : 6% APY - 3 months lock</p>
-                        <p className='text-white mb-0'>Tier 2 Staking : 15% APY - 6 months lock</p>
+                        <p className='text-white mb-0'>Tier 2 Staking : 15% APY - 12 months lock</p>
                     </div>
                     <div className='mb-3 mb-lg-0'>
                         <p className='h3' style={{color:'#4048a1'}}>PRELAUNCH STAKING AVAILABLE!</p>
