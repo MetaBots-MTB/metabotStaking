@@ -21,11 +21,11 @@ function Dropdown({ options, setIndex }: IDropDown) {
               <div key={ind}
                 onClick={() => {
                   setIndex(ind)
-                  setSelected(`${option.apy / 100}% apy ${formatDuration(option.time.toNumber())} minutes`);
+                  setSelected(`${formatDuration(option.time.toNumber())} - ${option.apy / 100}% apy`);
                   setIsActive(false);
                 }}
                 className="dropdown-item"
-              ><div style={{color:'white'}}> {option.apy / 100}% apy - {formatDuration(option.time.toNumber())} minutes </div> 
+              ><div style={{color:'white'}}>{formatDuration(option.time.toNumber())} - {option.apy / 100}% apy</div> 
               </div>
             )
             )}

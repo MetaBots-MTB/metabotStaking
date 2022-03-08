@@ -33,7 +33,7 @@ export const formatDuration = (value: string | number, unix = true) => {
   if (isUndefined(value)) return null;
   const numberValue = parseFloat(value.toString())
   if (Number.isNaN(numberValue) || !Number.isFinite(numberValue)) return null
-  return moment.duration(numberValue * (unix ? 1000 : 1)).format()
+  return moment.duration(numberValue * (unix ? 1000 : 1)).humanize()
 }
 
 export const formatBN = (value:BigNumber | BigNumberish  , decimals = 18) => {
