@@ -99,20 +99,26 @@ function StakeInfo() {
 
                 <div className='col-lg-6 d-lg-flex flex-lg-column mt-5 mt-lg-1 mb-lg-1 justify-content-lg-between'>
                     <div className='mb-3 mb-lg-0'>
-                        <p className='text-white mb-2'>Tier 1 Staking : 6% APY - 3 months lock</p>
-                        <p className='text-white mb-0'>Tier 2 Staking : 15% APY - 12 months lock</p>
+                        <p className='text-white mb-2'>Tier 1 Staking : 6% APY - 3 months lockup</p>
+                        <p className='text-white mb-0'>Tier 2 Staking : 15% APY - 12 months lockup</p>
                     </div>
                     <div className='mb-3 mb-lg-0'>
                         <p className='h3' style={{color:'#4048a1'}}>PRELAUNCH STAKING AVAILABLE!</p>
-                        <p className='text-color mb-1'>Every wallet that stakes 333,000 tokens BEFORE launch receives 1 free NFT with a max of 6 NFTs (full complete robot) - this can take place up to 6 times.</p>
-                        <p className='mb-0 text-color'>ie. 1,999,000 staked would receive 6 NFTs to claim when available</p>
+                        <p className='text-color mb-3'>
+                            Every wallet that stakes 333,000 tokens BEFORE launch receives 1 free NFT. (full complete robot)<br />
+                            This can take place up to 6 times (a maximum of 6 NFT's) and only counts for stakes with a lockup of 12 months.
+                        </p>
+                        <p className='mb-0 text-color'>e.g.: A wallet with 1,998,000 staked tokens with a 12 months lockup would receive 6 NFTs.</p>
                     </div>
                     <div className='mb-3 mb-lg-0'>
-                        <p className='text-color mb-1'>After launch, staking will be a minimum of 666,000 tokens to get 1 free NFT with an max of 6 NFTs.</p>
-                        <p className='mb-0 text-color'>i.e. 3,996,000 staked would receive 6 NFTs to claim when available.</p>
+                        <p className='text-color mb-3'>
+                            After launch, every wallet needs to stake a minimum of 666,000 tokens to get 1 free NFT.<br />
+                            Prerequisites are the same: Maximum 6 NFT's and counts only for stakes with a lockup of 12 months.
+                        </p>
+                        <p className='mb-0 text-color'>e.g.: A wallet with 3,996,000 staked tokens with a 12 months lockup would receive 6 NFTs.</p>
                     </div>
                     <div className='mb-3 mb-lg-0'>
-                        <p className='text-color  mb-0'>Prelaunch stakers will receive their NFTs early with the game launch, while post launch stakers will receive at the end of lock period.</p>
+                        <p className='text-color mb-0'>Prelaunch stakers will receive their NFTs early with the game launch, while post launch stakers will receive at the end of lock period.</p>
                     </div>
                 </div>
 
