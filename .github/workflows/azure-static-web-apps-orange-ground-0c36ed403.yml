@@ -31,6 +31,12 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
+        env:
+          CI: false
+          REACT_APP_CHAIN_ID: 56
+          REACT_APP_NODE_1: "https://bsc-dataseed1.ninicoin.io"
+          REACT_APP_NODE_2: "https://bsc-dataseed1.defibit.io"
+          REACT_APP_NODE_3: "https://bsc-dataseed.binance.org"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

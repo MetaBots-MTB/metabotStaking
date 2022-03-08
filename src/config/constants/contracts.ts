@@ -9,9 +9,11 @@ export default {
         97: '0xA15fa9d67ed47b35a9E478007d943DB1c1286db6',
     },
     MetaBotToken: {
+        56: '0x09861d8c3c1350699f8522253e5485f751d6fa78',
         97: '0x09861d8c3C1350699f8522253E5485f751D6fA78'
     },
     MTB_staking: {
+        56: '0x52c5b4d0c6296d3c7ab81662c54140509d8694b6',
         97: '0x433FF4d2aB2a37130eA0DCC54F827E1BfdD54be4'
     }
 }
