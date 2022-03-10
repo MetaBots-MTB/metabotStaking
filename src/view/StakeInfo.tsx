@@ -105,7 +105,7 @@ function StakeInfo() {
                     <div className='mb-3 mb-lg-0'>
                         <p className='h3' style={{color:'#4048a1'}}>PRELAUNCH STAKING AVAILABLE!</p>
                         <p className='text-color mb-3'>
-                            Every wallet that stakes 333,000 tokens BEFORE launch receives 1 free NFT. (full complete robot)<br />
+                            Every wallet that stakes 333,000 tokens BEFORE launch receives 1 free NFT.<br />
                             This can take place up to 6 times (a maximum of 6 NFT's) and only counts for stakes with a lockup of 12 months.
                         </p>
                         <p className='mb-0 text-color'>e.g.: A wallet with 1,998,000 staked tokens with a 12 months lockup would receive 6 NFTs.</p>
